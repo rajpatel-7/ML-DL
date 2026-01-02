@@ -46,8 +46,10 @@ export default function Predict() {
       const payload = { ...form };
       delete payload.name; // Backend doesn't need the name
 
-      const res = axios.post(`${import.meta.env.VITE_API_URL}/predict`, payload)
-
+      const res = await axios.post(
+        "http://127.0.0.1:8000/predict",
+        payload
+      );
 
       // Store in sessionStorage for the Result page
       sessionStorage.setItem('predictionResult', JSON.stringify({
